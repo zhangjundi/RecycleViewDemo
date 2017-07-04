@@ -19,5 +19,6 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(new HomeLayoutManager());
 
 //        rv.addItemDecoration(new HistoryItemDecoration(this));
+//        rv.addItemDecoration(new HomeItemDecoration());
     }
 }

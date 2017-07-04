@@ -29,23 +29,33 @@ public class HomeLayoutManager extends RecyclerView.LayoutManager {
             initPosition = itemCount - CardConfig.MAX_SHOW_COUNT;
         }
 
-        int i=0;
-        int left=0;
+        int i = 0;
+        int left = getPaddingLeft();
         for (int position = initPosition; position < itemCount; position++) {
             //从缓存获取view
             View view = recycler.getViewForPosition(position);
             addView(view);
-            measureChild(view, 0, 0);
-
             int widthSpace = getWidth();
-            int heightSpace = getHeight()-getDecoratedMeasuredHeight(view);
+            int heightSpace = getHeight() - getDecoratedMeasuredHeight(view);
+            view.measure(widthSpace / 4, heightSpace);
             layoutDecorated(view,
                     left,
-                    heightSpace/2,
-                    left+ getDecoratedMeasuredWidth(view),
-                    heightSpace/2 + getDecoratedMeasuredHeight(view));
+                    heightSpace / 2,
+                    left + widthSpace / 4,
+                    heightSpace / 2 + getDecoratedMeasuredHeight(view));
             // 均匀的缩放和位移
-            view.setTag(android.R.id.button1,i);
+            view.setTag(R.id.iv, i);
+//            view.getWidth()*view.getWidth()-width*width/16
+            if (i == 3) {
+                view.setRotationY(-80);
+            } else if (i == 0)
+                view.setRotationY(80);
+            else {
+//                view.set
+                view.setScaleX(0.8f);
+                view.setScaleY(0.8f);
+            }
+            left += widthSpace / 4;
             i++;
 
         }
