@@ -47,6 +47,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
         switch (viewType) {
             case 0:
                 ((ViewHolderOne) holder).iv.setBackgroundResource(R.mipmap.ceshi);
+                ((ViewHolderOne) holder).tv.setText("第"+position+"个");
                 break;
             case 1:
                 ((ViewHolderTwo) holder).tv.setText("ceshi");
@@ -74,10 +75,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
 
     class ViewHolderOne extends RecyclerView.ViewHolder {
         ImageView iv;
-
+        TextView tv;
         public ViewHolderOne(View view) {
             super(view);
             iv = (ImageView) view.findViewById(R.id.iv);
+            tv = (TextView) view.findViewById(R.id.tv);
         }
     }
 
